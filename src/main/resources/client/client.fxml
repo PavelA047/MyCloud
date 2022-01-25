@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="538.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.ClientController">
+    <ListView fx:id="clientView" layoutX="15.0" layoutY="35.0" prefHeight="400.0" prefWidth="230.0" />
+   <ListView fx:id="serverView" layoutX="255.0" layoutY="35.0" prefHeight="400.0" prefWidth="230.0" />
+   <Label fx:id="clientLabel" layoutX="14.0" layoutY="471.0" prefHeight="59.0" prefWidth="230.0" />
+   <Label fx:id="serverLabel" layoutX="255.0" layoutY="471.0" prefHeight="59.0" prefWidth="230.0" />
+   <Button layoutX="15.0" layoutY="438.0" mnemonicParsing="false" onAction="#upload" text="Upload" />
+   <Button layoutX="255.0" layoutY="438.0" mnemonicParsing="false" onAction="#download" text="Download" />
+</AnchorPane>
