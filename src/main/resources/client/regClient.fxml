@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="390" prefWidth="350.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.RegController">
+      <TextField fx:id="name" layoutX="15.0" layoutY="30" prefHeight="26.0" prefWidth="233.0" promptText="First name" />
+      <TextField fx:id="surname" layoutX="15.0" layoutY="70" prefHeight="26.0" prefWidth="234.0" promptText="Last name" />
+      <TextField fx:id="login" layoutX="15.0" layoutY="110" prefHeight="26.0" prefWidth="234.0" promptText="login" />
+      <TextField fx:id="password" layoutX="15.0" layoutY="150" prefHeight="26.0" prefWidth="234.0" promptText="password" />
+      <TextField fx:id="location" layoutX="15.0" layoutY="190" prefHeight="26.0" prefWidth="234.0" promptText="location" />
+      <TextField fx:id="gender" layoutX="15.0" layoutY="230" prefHeight="26.0" prefWidth="234.0" promptText="gender" />
+   <Button onAction="#reg" layoutX="15.0" layoutY="270.0" mnemonicParsing="false" text="Registration" />
+    <Button onAction="#auth" layoutX="15.0" layoutY="340.0" mnemonicParsing="false" text="I'm already registered" />
+   <Label layoutX="15.0" layoutY="310.0" text="OR" />
+</AnchorPane>

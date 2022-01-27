@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="104.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.CommonController">
+   <children>
+      <Label layoutX="105.0" layoutY="30.0" prefHeight="20.0" prefWidth="190.0" text="Glad to see you! Register or log in" />
+      <Button onAction="#reg" layoutX="70.0" layoutY="63.0" mnemonicParsing="false" text="Register" />
+      <Button onAction="#auth" layoutX="270.0" layoutY="63.0" mnemonicParsing="false" text="Log in" />
+   </children>
+</AnchorPane>

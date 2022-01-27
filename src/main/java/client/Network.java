@@ -11,7 +11,7 @@ import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import lombok.extern.slf4j.Slf4j;
-import model.AbstractMessage;
+import common.AbstractMessage;
 
 @Slf4j
 public class Network {

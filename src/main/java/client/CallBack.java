@@ -1,6 +1,6 @@
 package client;
 
-import model.AbstractMessage;
+import common.AbstractMessage;
 
 import java.io.IOException;
 

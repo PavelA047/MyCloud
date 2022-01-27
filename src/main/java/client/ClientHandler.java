@@ -2,7 +2,7 @@ package client;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import model.AbstractMessage;
+import common.AbstractMessage;
 
 public class ClientHandler extends SimpleChannelInboundHandler<AbstractMessage> {
     private final CallBack callBack;

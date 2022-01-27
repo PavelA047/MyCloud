@@ -2,12 +2,13 @@ package client;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import model.FileMessage;
-import model.FileRequest;
-import model.FilesList;
+import common.FileMessage;
+import common.FileRequest;
+import common.FilesList;
 
 import java.io.File;
 import java.io.IOException;
@@ -90,12 +91,14 @@ public class ClientController implements Initializable {
         }
     }
 
+    @FXML
     public void upload(ActionEvent actionEvent) throws IOException {
         String fileName = clientView.getSelectionModel().getSelectedItem();
         FileMessage fileMessage = new FileMessage(currentDir.resolve(fileName));
         network.write(fileMessage);
     }
 
+    @FXML
     public void download(ActionEvent actionEvent) throws IOException {
         String fileName = serverView.getSelectionModel().getSelectedItem();
         network.write(new FileRequest(fileName));
