@@ -1,13 +1,13 @@
-package client;
+package org.example.client;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import model.FileMessage;
-import model.FileRequest;
-import model.FilesList;
+import org.example.model.FileMessage;
+import org.example.model.FileRequest;
+import org.example.model.FilesList;
 
 import java.io.File;
 import java.io.IOException;

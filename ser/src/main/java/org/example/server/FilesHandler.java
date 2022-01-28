@@ -1,11 +1,11 @@
-package server;
+package org.example.server;
 
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
-import model.AbstractMessage;
-import model.FileMessage;
-import model.FileRequest;
-import model.FilesList;
+import org.example.model.AbstractMessage;
+import org.example.model.FileMessage;
+import org.example.model.FileRequest;
+import org.example.model.FilesList;
 
 import java.io.IOException;
 import java.nio.file.Files;

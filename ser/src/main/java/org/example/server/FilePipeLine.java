@@ -1,6 +1,5 @@
-package server;
+package org.example.server;
 
-import client.ClientHandler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.handler.codec.serialization.ClassResolvers;

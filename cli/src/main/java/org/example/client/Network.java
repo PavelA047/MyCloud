@@ -1,4 +1,4 @@
-package client;
+package org.example.client;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -11,7 +11,7 @@ import io.netty.handler.codec.serialization.ClassResolvers;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.serialization.ObjectEncoder;
 import lombok.extern.slf4j.Slf4j;
-import model.AbstractMessage;
+import org.example.model.AbstractMessage;
 
 @Slf4j
 public class Network {
@@ -57,7 +57,7 @@ public class Network {
             ChannelFuture future = bootstrap.connect("localhost", 8189)
                     .sync();
             future.channel().closeFuture().sync();
-            log.info("server started...");
+            log.info("org.example.server started...");
         } catch (Exception e) {
             log.error("e=", e);
         } finally {
