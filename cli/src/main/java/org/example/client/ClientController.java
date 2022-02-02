@@ -2,6 +2,7 @@ package org.example.client;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -90,12 +91,14 @@ public class ClientController implements Initializable {
         }
     }
 
+    @FXML
     public void upload(ActionEvent actionEvent) throws IOException {
         String fileName = clientView.getSelectionModel().getSelectedItem();
         FileMessage fileMessage = new FileMessage(currentDir.resolve(fileName));
         network.write(fileMessage);
     }
 
+    @FXML
     public void download(ActionEvent actionEvent) throws IOException {
         String fileName = serverView.getSelectionModel().getSelectedItem();
         network.write(new FileRequest(fileName));
