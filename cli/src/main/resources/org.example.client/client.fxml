@@ -3,12 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="538.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.example.client.ClientController">
-    <ListView fx:id="clientView" layoutX="15.0" layoutY="35.0" prefHeight="400.0" prefWidth="230.0" />
-   <ListView fx:id="serverView" layoutX="255.0" layoutY="35.0" prefHeight="400.0" prefWidth="230.0" />
-   <Label fx:id="clientLabel" layoutX="14.0" layoutY="471.0" prefHeight="59.0" prefWidth="230.0" />
-   <Label fx:id="serverLabel" layoutX="255.0" layoutY="471.0" prefHeight="59.0" prefWidth="230.0" />
-   <Button layoutX="15.0" layoutY="438.0" mnemonicParsing="false" onAction="#upload" text="Upload" />
-   <Button layoutX="255.0" layoutY="438.0" mnemonicParsing="false" onAction="#download" text="Download" />
+<AnchorPane prefHeight="598.0" prefWidth="503.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.client.ClientController">
+    <ListView fx:id="clientView" layoutX="15.0" layoutY="51.0" prefHeight="400.0" prefWidth="230.0" visible="false" managed="false"/>
+    <ListView fx:id="serverView" layoutX="255.0" layoutY="51.0" prefHeight="400.0" prefWidth="230.0" visible="false" managed="false"/>
+    <Label fx:id="clientLabel" layoutX="15.0" layoutY="526.0" prefHeight="59.0" prefWidth="230.0" visible="false" managed="false"/>
+    <Label fx:id="serverLabel" layoutX="255.0" layoutY="556.0" prefHeight="26.0" prefWidth="230.0" visible="false" managed="false"/>
+    <Button fx:id="butUpload" layoutX="15.0" layoutY="458.0" mnemonicParsing="false" onAction="#upload" text="Upload" visible="false" managed="false"/>
+    <Button fx:id="butDownload" layoutX="254.0" layoutY="458.0" mnemonicParsing="false" onAction="#download" text="Download" visible="false" managed="false"/>
+    <Button fx:id="butReg" layoutX="50.0" layoutY="30.0" mnemonicParsing="false" onAction="#reg" text="Register" />
+    <Button fx:id="butAuth" layoutX="50.0" layoutY="70.0" mnemonicParsing="false" onAction="#auth" text="Authenticate" />
+    <Button fx:id="butDir" layoutX="255.0" layoutY="522.0" mnemonicParsing="false" onAction="#butDir" text="Create directory" visible="false" managed="false"/>
+    <TextField fx:id="dirField" layoutX="405.0" layoutY="522.0" prefHeight="26.0" prefWidth="84.0" visible="false" managed="false"/>
+    <Button fx:id="upButton" layoutX="255.0" layoutY="17.0" mnemonicParsing="false" onAction="#upBut" prefHeight="19.0" prefWidth="52.0" text="up" visible="false" managed="false"/>
+    <Button fx:id="delBut" layoutX="405.0" layoutY="458.0" mnemonicParsing="false" onAction="#delete" text="Delete" visible="false" managed="false"/>
+    <Button fx:id="renameBut" layoutX="255.0" layoutY="490.0" mnemonicParsing="false" onAction="#rename" text="Rename file" visible="false" managed="false"/>
+    <TextField fx:id="renameDir" layoutX="405.0" layoutY="490.0" prefHeight="26.0" prefWidth="84.0" visible="false" managed="false"/>
 </AnchorPane>

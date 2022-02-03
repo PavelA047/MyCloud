@@ -20,8 +20,8 @@ public class CloudServer {
                     .group(auth, worker)
                     .childHandler(new FilePipeLine());
             ChannelFuture future = serverBootstrap.bind(8189).sync();
-            future.channel().closeFuture().sync();
             log.info("org.example.server started...");
+            future.channel().closeFuture().sync();
         } catch (Exception e) {
             log.error("e=", e);
         } finally {
