@@ -33,7 +33,7 @@ public class RegController implements Initializable {
         StringCommand command = new StringCommand(String.format("/reg %s %s %s %s %s %s",
                 firstName, secondName, log, pass, loc, gen));
         network.write(command);
-        labelReg.setText("Now, close this window and try to auth!");
+        login.getScene().getWindow().hide();
     }
 
     @Override
