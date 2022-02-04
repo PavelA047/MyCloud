@@ -24,6 +24,7 @@ public class AuthClient implements Initializable {
         StringCommand command = new StringCommand(String.format("/auth %s %s",
                 log, pass));
         network.write(command);
+        login.getScene().getWindow().hide();
     }
 
     @Override

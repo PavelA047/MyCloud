@@ -11,7 +11,7 @@ public class FilePipeLine extends ChannelInitializer<SocketChannel> {
     protected void initChannel(SocketChannel channel) throws Exception {
         channel.pipeline().addLast(
                 new ObjectEncoder(),
-                new ObjectDecoder(50 * 1024 * 1024, ClassResolvers.cacheDisabled(null)),
+                new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
                 new FilesHandler()
         );
     }

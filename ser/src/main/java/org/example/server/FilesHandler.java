@@ -5,11 +5,10 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.example.model.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.io.InputStream;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,11 +34,30 @@ public class FilesHandler extends SimpleChannelInboundHandler<AbstractMessage> {
         switch (message.getType()) {
             case FILE_REQUEST:
                 FileRequest fileRequest = (FileRequest) message;
-                ctx.writeAndFlush(new FileMessage(currentDir.resolve(fileRequest.getFileName())));
+                String fileName = fileRequest.getFileName();
+                byte[] buf = new byte[8192];
+                try (InputStream is = new FileInputStream(currentDir.resolve(fileName).toFile())) {
+                    while (is.available() > 0) {
+                        int cnt = is.read(buf);
+                        if (cnt < 8192) {
+                            byte[] tmp = new byte[cnt];
+                            System.arraycopy(buf, 0, tmp, 0, cnt);
+                            ctx.writeAndFlush(new FileMessage(fileName, tmp.clone()));
+                        } else {
+                            ctx.writeAndFlush(new FileMessage(fileName, buf.clone()));
+                        }
+                    }
+
+                }
                 break;
             case FILE_MESSAGE:
                 FileMessage fileMessage = (FileMessage) message;
-                Files.write(currentDir.resolve(fileMessage.getFileName()), fileMessage.getBytes());
+                Files.write(
+                        currentDir.resolve(fileMessage.getFileName()),
+                        fileMessage.getBytes(),
+                        StandardOpenOption.CREATE,
+                        StandardOpenOption.APPEND
+                );
                 sendList(ctx);
                 break;
             case STRING:
