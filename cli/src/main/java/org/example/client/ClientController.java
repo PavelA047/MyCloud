@@ -20,11 +20,14 @@ import org.example.model.FilesList;
 import org.example.model.StringCommand;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -109,7 +112,12 @@ public class ClientController implements Initializable {
                 switch (message.getType()) {
                     case FILE_MESSAGE:
                         FileMessage fileMessage = (FileMessage) message;
-                        Files.write(currentDir.resolve(fileMessage.getFileName()), fileMessage.getBytes());
+                        Files.write(
+                                currentDir.resolve(fileMessage.getFileName()),
+                                fileMessage.getBytes(),
+                                StandardOpenOption.CREATE,
+                                StandardOpenOption.APPEND
+                        );
                         fillCurrentDirFiles();
                         break;
                     case LIST:
@@ -161,8 +169,19 @@ public class ClientController implements Initializable {
     @FXML
     public void upload(ActionEvent actionEvent) throws IOException {
         String fileName = clientView.getSelectionModel().getSelectedItem();
-        FileMessage fileMessage = new FileMessage(currentDir.resolve(fileName));
-        network.write(fileMessage);
+        byte[] buf = new byte[8192];
+        try (InputStream is = new FileInputStream(currentDir.resolve(fileName).toFile())) {
+            while (is.available() > 0) {
+                int cnt = is.read(buf);
+                if (cnt < 8192) {
+                    byte[] tmp = new byte[cnt];
+                    System.arraycopy(buf, 0, tmp, 0, cnt);
+                    network.write(new FileMessage(fileName, tmp.clone()));
+                } else {
+                    network.write(new FileMessage(fileName, buf.clone()));
+                }
+            }
+        }
     }
 
     @FXML

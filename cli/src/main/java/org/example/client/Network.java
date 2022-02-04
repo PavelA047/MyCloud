@@ -56,8 +56,8 @@ public class Network {
                     });
             ChannelFuture future = bootstrap.connect("localhost", 8189)
                     .sync();
+            log.info("org.example.client started...");
             future.channel().closeFuture().sync();
-            log.info("org.example.server started...");
         } catch (Exception e) {
             log.error("e=", e);
         } finally {
